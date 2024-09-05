@@ -9,14 +9,30 @@ import SwiftUI
 
 
 struct ContentView: View {
+    @State private var columns = [
+//        GridItem(.fixed(110)),
+//        GridItem(.fixed(110)),
+//        GridItem(.fixed(110))
+//        GridItem(),
+//        GridItem(),
+//        GridItem()
+        GridItem(.flexible(maximum: 110)),
+        GridItem(.flexible(maximum: 200))
+        
+        
+        
+    ]
+    
+    
     var body: some View {
         ScrollView(.horizontal) {
-            LazyHStack {
+            
+            LazyHGrid(rows: columns) {
                 ForEach (0..<1000) { i in
-                    let _ = print("Dang \(i)")
                     RedAndCyanView()
                 }  // ForEach
-            }  // VStack
+                
+            }  // LazyHGrid
         }  // ScrollView
         .padding()
         
