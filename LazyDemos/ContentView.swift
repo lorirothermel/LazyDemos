@@ -7,18 +7,39 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
+        ScrollView(.horizontal) {
+            LazyHStack {
+                ForEach (0..<1000) { i in
+                    let _ = print("Dang \(i)")
+                    RedAndCyanView()
+                }  // ForEach
+            }  // VStack
+        }  // ScrollView
         .padding()
-    }
-}
+        
+    }  // some View
+}  // ContentView
+
+
+
+struct RedAndCyanView: View {
+    var body: some View {
+        ZStack {
+            Color.red
+            Rectangle()
+                .fill(.cyan)
+                .frame(width: 100, height: 100)
+        }  // ZStack
+    }  // some View
+}  // ContentView
+
+
 
 #Preview {
     ContentView()
 }
+
+
